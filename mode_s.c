@@ -29,6 +29,8 @@
 //
 
 #include "dump1090.h"
+
+#include <time.h>
 //
 // ===================== Mode S detection and decoding  ===================
 //
@@ -1163,6 +1165,7 @@ void displayModesMessage(struct modesMessage *mm) {
         printf("*");
 
     for (j = 0; j < mm->msgbits/8; j++) printf("%02x", mm->msg[j]);
+    printf(" %d", (int) time(0));
     printf(";\n");
 
     if (Modes.raw) {
